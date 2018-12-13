@@ -1,0 +1,50 @@
+<div class="body"></div>
+<div class="grad"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class=" col-12 bg-grey p-5 mt-5">
+            <h1>Enter Your Information</h1>
+
+            <form [formGroup]="student" (ngSubmit)="onSubmit()" >
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Student Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="name" formControlName="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Student Age</label>
+                    <input type="number" name="age" class="form-control" placeholder="Age" formControlName="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Student City</label>
+                    <input type="text" class="form-control" placeholder="City" formControlName="city" required>
+                </div>
+               
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Country</label>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                    (change)="getStateList($event.target.value)"
+                  >
+                      <option *ngFor="let item of countryList">{{item}}</option>
+                    
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">States</label>
+                    <select class="form-control" id="exampleFormControlSelect1" formControlName="state" >
+                      <option *ngFor="let item of states">{{item.name}}</option>
+                    
+                    </select>
+                  </div>
+                 
+               
+                <button type="submit" class="btn btn-primary">Submit</button>
+               
+            </form>
+            <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+        </div>
+        <app-displayData></app-displayData>
+    </div>
+</div>
